@@ -55,6 +55,19 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-content {
+            transition: transform 0.25s ease;
+        }
+        .modal-active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-active {
+            overflow-y: auto; /* Cho phép cuộn nếu nội dung modal dài */
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -63,6 +76,7 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-gray-800">[Tên Của Bạn]</a>
             <div class="space-x-4">
+                <a href="#home" class="text-gray-600 hover:text-blue-500">Trang chủ</a>
                 <a href="#about" class="text-gray-600 hover:text-blue-500">Giới thiệu</a>
                 <a href="#portfolio" class="text-gray-600 hover:text-blue-500">Dự án</a>
                 <a href="#services" class="text-gray-600 hover:text-blue-500">Dịch vụ</a>
@@ -117,7 +131,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 1</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Thiết kế bộ nhận diện thương hiệu cho công ty XYZ.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="1" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
@@ -125,7 +139,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 2</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Thiết kế giao diện người dùng cho ứng dụng di động ABC.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="2" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
@@ -133,7 +147,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 3</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Minh họa cho chiến dịch quảng cáo MNO.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="3" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
@@ -141,23 +155,23 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 4</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Thiết kế bao bì sản phẩm.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="4" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
                     <img src="https://placehold.co/600x400/808080/4A4A4A?text=Dự+Án+5" alt="Hình ảnh Dự án 5" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 5</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Thiết kế infographic.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="5" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
-                 <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
                     <img src="https://placehold.co/600x400/707070/4A4A4A?text=Dự+Án+6" alt="Hình ảnh Dự án 6" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">Tên Dự Án 6</h3>
                         <p class="text-gray-600 mb-4">Mô tả ngắn gọn về dự án này. Ví dụ: Thiết kế ấn phẩm truyền thông.</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</a>
+                        <button data-project-id="6" class="open-modal-button text-blue-500 hover:text-blue-700 font-medium">Xem Chi Tiết &rarr;</button>
                     </div>
                 </div>
             </div>
@@ -278,6 +292,30 @@
         </div>
     </footer>
 
+    <div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60] hidden opacity-0">
+        <div class="modal-content bg-white rounded-lg shadow-xl max-w-2xl w-full mx-auto p-6 md:p-8 transform -translate-y-10">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalProjectTitle" class="text-2xl font-bold text-gray-800">Tên Dự Án</h3>
+                <button id="closeModalButton" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <img id="modalProjectImage" src="https://placehold.co/800x500/DDDDDD/555555?text=Hình+Ảnh+Dự+Án" alt="Hình ảnh chi tiết dự án" class="w-full h-auto max-h-[50vh] object-contain rounded-md mb-6">
+            <div id="modalProjectDescription" class="text-gray-700 space-y-3">
+                <p>Đây là mô tả chi tiết cho dự án. Bạn có thể viết về quá trình thực hiện, các thách thức đã gặp phải, và giải pháp bạn đã đưa ra.</p>
+                <p>Thêm các đoạn văn bản, hình ảnh, hoặc thậm chí video nhúng để làm phong phú nội dung.</p>
+                <h4 class="font-semibold text-lg mt-4">Công cụ sử dụng:</h4>
+                <ul id="modalProjectTools" class="list-disc list-inside">
+                    <li>Adobe Photoshop</li>
+                    <li>Adobe Illustrator</li>
+                    <li>Figma</li>
+                </ul>
+            </div>
+            <div class="mt-8 text-right">
+                <button id="closeModalButtonBottom" class="btn-secondary">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         // Cập nhật năm hiện tại ở footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -289,28 +327,21 @@
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault(); // Ngăn chặn việc gửi form mặc định
-
-                // Lấy dữ liệu form (ví dụ)
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const subject = document.getElementById('subject').value;
                 const message = document.getElementById('message').value;
 
-                // Validate đơn giản
                 if (!name || !email || !subject || !message) {
                     formMessage.textContent = 'Vui lòng điền đầy đủ thông tin.';
                     formMessage.className = 'mt-4 text-center text-red-500';
                     return;
                 }
                 
-                // Ở đây bạn có thể thêm logic gửi email hoặc lưu vào backend
-                // Ví dụ: sử dụng Fetch API để gửi đến một dịch vụ như Formspree hoặc backend của bạn
-
                 formMessage.textContent = 'Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể.';
                 formMessage.className = 'mt-4 text-center text-green-500';
-                contactForm.reset(); // Xóa các trường trong form
+                contactForm.reset(); 
 
-                // Tự động ẩn thông báo sau vài giây
                 setTimeout(() => {
                     formMessage.textContent = '';
                     formMessage.className = 'mt-4 text-center';
@@ -325,7 +356,6 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    // Tính toán vị trí của target element, trừ đi chiều cao của navbar cố định
                     const navbarHeight = document.querySelector('nav').offsetHeight;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                     
@@ -336,6 +366,129 @@
                 }
             });
         });
+
+        // Logic cho Modal Dự Án
+        const projectModal = document.getElementById('projectModal');
+        const openModalButtons = document.querySelectorAll('.open-modal-button');
+        const closeModalButton = document.getElementById('closeModalButton');
+        const closeModalButtonBottom = document.getElementById('closeModalButtonBottom');
+        
+        const modalProjectTitle = document.getElementById('modalProjectTitle');
+        const modalProjectImage = document.getElementById('modalProjectImage');
+        const modalProjectDescription = document.getElementById('modalProjectDescription');
+        const modalProjectTools = document.getElementById('modalProjectTools');
+
+        // Dữ liệu mẫu cho các dự án (bạn sẽ cần thay thế bằng dữ liệu thật của mình)
+        const projectsData = {
+            1: {
+                title: "Thiết Kế Bộ Nhận Diện Thương Hiệu XYZ",
+                image: "https://placehold.co/800x500/FFC0CB/333333?text=Chi+Tiết+Dự+Án+1",
+                description: "<p>Dự án này tập trung vào việc xây dựng một bộ nhận diện thương hiệu toàn diện cho công ty XYZ, một startup trong lĩnh vực công nghệ. Mục tiêu là tạo ra một hình ảnh chuyên nghiệp, hiện đại và dễ nhận biết.</p><p>Quá trình bao gồm nghiên cứu thị trường, phác thảo ý tưởng, thiết kế logo, lựa chọn bảng màu, font chữ và các yếu tố đồ họa hỗ trợ. Kết quả là một bộ nhận diện thương hiệu mạnh mẽ, giúp XYZ nổi bật và thu hút khách hàng tiềm năng.</p>",
+                tools: ["Adobe Illustrator", "Adobe Photoshop", "Nghiên cứu thị trường"]
+            },
+            2: {
+                title: "Giao Diện Người Dùng Ứng Dụng Di Động ABC",
+                image: "https://placehold.co/800x500/ADD8E6/333333?text=Chi+Tiết+Dự+Án+2",
+                description: "<p>Thiết kế giao diện người dùng (UI) và trải nghiệm người dùng (UX) cho ứng dụng di động ABC, một ứng dụng quản lý công việc cá nhân. Ưu tiên hàng đầu là sự đơn giản, trực quan và dễ sử dụng.</p><p>Tôi đã thực hiện wireframing, prototyping và thiết kế chi tiết các màn hình, đảm bảo luồng người dùng mượt mà và hiệu quả. Ứng dụng nhận được phản hồi tích cực về tính thẩm mỹ và khả năng sử dụng.</p>",
+                tools: ["Figma", "Adobe XD", "User Testing"]
+            },
+            3: {
+                title: "Minh Họa Cho Chiến Dịch Quảng Cáo MNO",
+                image: "https://placehold.co/800x500/90EE90/333333?text=Chi+Tiết+Dự+Án+3",
+                description: "<p>Thực hiện bộ sưu tập các hình ảnh minh họa độc đáo cho chiến dịch quảng cáo sản phẩm mới của thương hiệu MNO. Phong cách minh họa được lựa chọn nhằm truyền tải sự vui tươi, năng động và sáng tạo của sản phẩm.</p><p>Các minh họa được sử dụng trên nhiều kênh truyền thông khác nhau, từ mạng xã hội đến ấn phẩm in ấn, góp phần tăng cường nhận diện thương hiệu và thu hút sự chú ý của đối tượng mục tiêu.</p>",
+                tools: ["Procreate", "Adobe Illustrator", "Wacom Tablet"]
+            },
+             4: {
+                title: "Thiết Kế Bao Bì Sản Phẩm Cao Cấp",
+                image: "https://placehold.co/800x500/FFFFE0/333333?text=Chi+Tiết+Dự+Án+4",
+                description: "<p>Dự án thiết kế bao bì cho một dòng sản phẩm mỹ phẩm cao cấp. Yêu cầu đặt ra là một thiết kế sang trọng, tinh tế, phản ánh được chất lượng và giá trị của sản phẩm bên trong.</p><p>Tôi đã sử dụng các yếu tố tối giản, kết hợp với chất liệu in ấn đặc biệt và kỹ thuật hoàn thiện cao cấp để tạo ra một bao bì không chỉ đẹp mắt mà còn mang lại trải nghiệm sang trọng cho người dùng.</p>",
+                tools: ["Adobe Illustrator", "Adobe Dimension", "Nghiên cứu vật liệu"]
+            },
+            5: {
+                title: "Thiết Kế Infographic Giáo Dục",
+                image: "https://placehold.co/800x500/E6E6FA/333333?text=Chi+Tiết+Dự+Án+5",
+                description: "<p>Phát triển một loạt infographic nhằm mục đích giáo dục cộng đồng về các vấn đề môi trường. Thông tin phức tạp được trình bày một cách trực quan, dễ hiểu thông qua việc sử dụng biểu đồ, icon và hình ảnh minh họa sinh động.</p><p>Các infographic này đã được chia sẻ rộng rãi trên các nền tảng trực tuyến, giúp nâng cao nhận thức và khuyến khích hành động tích cực từ cộng đồng.</p>",
+                tools: ["Canva", "Adobe Illustrator", "Piktochart"]
+            },
+            6: {
+                title: "Thiết Kế Ấn Phẩm Truyền Thông Sự Kiện",
+                image: "https://placehold.co/800x500/F0E68C/333333?text=Chi+Tiết+Dự+Án+6",
+                description: "<p>Chịu trách nhiệm thiết kế toàn bộ ấn phẩm truyền thông cho một sự kiện hội thảo quốc tế, bao gồm backdrop, standee, brochure, vé mời và các tài liệu quảng bá trực tuyến.</p><p>Thiết kế đảm bảo tính nhất quán về mặt hình ảnh, truyền tải được thông điệp chính của sự kiện và tạo ấn tượng chuyên nghiệp đối với người tham dự.</p>",
+                tools: ["Adobe InDesign", "Adobe Photoshop", "Adobe Illustrator"]
+            }
+            // Thêm dữ liệu cho các dự án khác nếu cần
+        };
+
+        function openModal(projectId) {
+            const projectData = projectsData[projectId];
+            if (projectData) {
+                modalProjectTitle.textContent = projectData.title;
+                modalProjectImage.src = projectData.image;
+                modalProjectImage.alt = `Hình ảnh chi tiết ${projectData.title}`;
+                modalProjectDescription.innerHTML = projectData.description; // Sử dụng innerHTML để render HTML từ description
+                
+                modalProjectTools.innerHTML = ''; // Xóa các tool cũ
+                projectData.tools.forEach(tool => {
+                    const li = document.createElement('li');
+                    li.textContent = tool;
+                    modalProjectTools.appendChild(li);
+                });
+
+                projectModal.classList.remove('hidden');
+                setTimeout(() => { // Thêm timeout nhỏ để transition có hiệu lực
+                     projectModal.classList.remove('opacity-0');
+                     projectModal.classList.add('opacity-100', 'modal-active');
+                     document.body.style.overflow = 'hidden'; // Ngăn cuộn trang nền
+                }, 20);
+
+            } else {
+                // Xử lý trường hợp không tìm thấy dữ liệu dự án
+                modalProjectTitle.textContent = "Không tìm thấy dự án";
+                modalProjectImage.src = "https://placehold.co/800x500/CCCCCC/FFFFFF?text=Lỗi";
+                modalProjectDescription.innerHTML = "<p>Xin lỗi, không tìm thấy thông tin chi tiết cho dự án này.</p>";
+                modalProjectTools.innerHTML = '';
+                projectModal.classList.remove('hidden');
+                 setTimeout(() => {
+                     projectModal.classList.remove('opacity-0');
+                     projectModal.classList.add('opacity-100', 'modal-active');
+                     document.body.style.overflow = 'hidden';
+                }, 20);
+            }
+        }
+
+        function closeModal() {
+            projectModal.classList.add('opacity-0');
+            projectModal.classList.remove('opacity-100', 'modal-active');
+            setTimeout(() => {
+                projectModal.classList.add('hidden');
+                 document.body.style.overflow = 'auto'; // Cho phép cuộn lại trang nền
+            }, 250); // Thời gian khớp với transition duration
+        }
+
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.dataset.projectId;
+                openModal(projectId);
+            });
+        });
+
+        if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
+        if(closeModalButtonBottom) closeModalButtonBottom.addEventListener('click', closeModal);
+
+        // Đóng modal khi nhấp chuột bên ngoài nội dung modal
+        projectModal.addEventListener('click', (event) => {
+            if (event.target === projectModal) { // Chỉ đóng nếu click vào nền mờ
+                closeModal();
+            }
+        });
+
+        // Đóng modal khi nhấn phím Escape
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
     </script>
 </body>
 </html>
